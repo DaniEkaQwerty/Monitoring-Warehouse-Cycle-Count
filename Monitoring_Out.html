@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cek Tally Sheet vs Scan OUT</title>
+  <link rel="stylesheet" href="private/Monitoring_Out.css" />
+</head>
+
+<body>
+  <header>
+    <h1 id="home" title="Klik untuk reset semua" tabindex="0" role="button">
+      Cek Tally Sheet vs Scan OUT
+    </h1>
+    <nav class="nav" aria-label="Halaman">
+      <a href="NEW_Monitoring_Transaksi.html">IN</a>
+      <a href="Monitoring_Out.html" class="on" aria-current="page">OUT</a>
+    </nav>
+  </header>
+  <main>
+    <div id="err"></div>
+
+    <div class="lay">
+      <div class="lc">
+        <section class="card rv" id="sel" style="display: none">
+          <div class="row">
+            <label for="sheet"><b>Sheet Tally</b></label>
+            <select id="sheet" disabled>
+              <option>-</option>
+            </select>
+            <span class="note" id="auto" style="margin: 0"></span>
+          </div>
+          <div id="info"></div>
+        </section>
+
+        <div class="rv" id="out" style="display: none">
+          <div class="oin">
+            <div class="stats">
+              <div class="st"><small>Baris Tally</small><b data-k="tag">0</b></div>
+              <div class="st ok">
+                <small>Sudah Out</small><b data-k="out">0</b>
+              </div>
+              <div class="st miss">
+                <small>Belum Out</small><b data-k="miss">0</b>
+              </div>
+            </div>
+            <section class="card" id="chart" style="margin: 0"></section>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card rc">
+
+        <div class="files">
+          <label class="dz" id="dz1"><input type="file" id="f1" accept=".xlsx,.xlsm,.xls" hidden /><b>Tally
+              Sheet</b><span id="m1">Klik atau seret file Tally</span></label>
+          <label class="dz" id="dz3"><input type="file" id="f3" accept=".xlsx,.xls,.csv" hidden /><b>TAB_IN</b><span
+              id="m3">Klik atau seret Data.xlsx</span></label>
+          <div class="dz" id="dz2" role="button" tabindex="0" title="Klik atau seret folder Scan Transaksi"><b>Scan
+              Transaksi
+              <span class="row" style="gap: 6px">
+                <button type="button" class="sm" id="rtrx" hidden>
+                  Reset
+                </button>
+              </span></b><span id="m2">Klik atau seret folder Scan</span></div>
+        </div>
+        <div id="trxwrap" style="display: none; margin-top: 12px">
+          <select id="trxsel" style="width: 100%"></select>
+          <div class="note" id="trxmsg" style="margin-top: 6px"></div>
+        </div>
+        <br />
+        <button type="button" id="btnAuto">Input Otomatis</button>
+      </aside>
+    </div>
+
+    <section class="card rv" id="res" style="display: none">
+      <div class="head">
+        <h2 style="margin: 0" id="rt">Hasil</h2>
+        <div class="row" style="gap: 8px">
+          <button id="tg" aria-expanded="false">Buka ▾</button>
+          <button id="dl">Unduh .xlsx</button>
+        </div>
+      </div>
+      <div class="fold shut" id="fold" inert>
+        <div class="foldin">
+          <div class="bar">
+            <span id="tabs" class="bar" style="margin: 0"></span>
+            <span id="fchips" class="fchips"></span>
+            <input type="search" id="q" placeholder="Filter..." />
+          </div>
+          <div class="wrap">
+            <table>
+              <thead id="th"></thead>
+              <tbody id="tb"></tbody>
+            </table>
+          </div>
+          <div class="note" id="foot"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popup Filter Kolom ala Excel -->
+  <div id="filterPop" class="filter-pop" style="display: none">
+    <div class="fp-head">
+      <div class="fp-title" id="fpTitle">Filter</div>
+      <input type="text" id="fpSearch" placeholder="Cari..." autocomplete="off" />
+    </div>
+    <div class="fp-options" id="fpOptions"></div>
+  </div>
+
+  <!-- Library SheetJS 0.18.5 (sama dengan yang tertanam di file aslimu).
+         Kalau mau tetap offline, ganti baris script ini dengan blok <script> SheetJS asli dari file lamamu. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="private/Monitoring_Out.js"></script>
+</body>
+
+</html>
